@@ -30,12 +30,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Center/Right: Framework detail */}
+        {/* Center/Right: Navigation */}
         <div className="flex flex-col items-center md:items-end gap-3">
-          <div className="text-[10px] text-soft-gray/60 font-light uppercase tracking-widest text-center md:text-right max-w-xs leading-relaxed">
-            Coded with athletic precision, built for peak digital performance.
-          </div>
-          
           <button
             onClick={handleScrollToTop}
             className="flex items-center gap-1.5 font-oswald text-[9px] uppercase tracking-[0.2em] text-orange-karasuno hover:text-white transition-colors cursor-pointer group"
