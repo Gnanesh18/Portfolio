@@ -1,65 +1,81 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
+import LoadingScreen from "@/components/LoadingScreen";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import TrainingArc from "@/components/TrainingArc";
+import PlayerStats from "@/components/PlayerStats";
+import MatchHighlights from "@/components/MatchHighlights";
+import TournamentRecord from "@/components/TournamentRecord";
+import PlayerProfile from "@/components/PlayerProfile";
+import Contact from "@/components/Contact";
+import SeasonJourney from "@/components/SeasonJourney";
+import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 2000], [0.30, 0]);
+  const y = useTransform(scrollY, [0, 2000], [0, -100]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      {loading ? (
+        <LoadingScreen onComplete={() => setLoading(false)} />
+      ) : (
+        <div className="flex flex-col min-h-screen bg-[#0B0B0B] text-white selection:bg-orange-karasuno selection:text-white relative">
+          {/* Subtle Parallax Background Portrait */}
+          <motion.div
+            style={{ opacity, y }}
+            className="fixed left-0 top-0 w-full md:w-[45%] h-screen pointer-events-none z-0 overflow-hidden"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            {/* Grayscale styled portrait image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-left md:bg-center grayscale contrast-[1.2] brightness-[0.45] mix-blend-luminosity"
+              style={{ backgroundImage: "url('/portrait.jpg')" }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {/* Edge blending gradients to merge into the dark background */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-transparent to-[#0B0B0B]/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-karasuno/15 via-transparent to-transparent mix-blend-color"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0B0B0B]"></div>
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0B0B0B] w-[15%]"></div>
+          </motion.div>
+
+          {/* Main Floating Navbar */}
+          <Navbar />
+
+          {/* Floating Vertical HUD Scroll-tracker */}
+          <SeasonJourney />
+
+          <main className="flex-1 flex flex-col relative z-10 bg-transparent">
+            {/* Hero Section */}
+            <Hero />
+
+            {/* Timeline: Training Arc */}
+            <TrainingArc />
+
+            {/* Skills: Player Stats */}
+            <PlayerStats />
+
+            {/* Projects: Match Highlights */}
+            <MatchHighlights />
+
+            {/* Achievements: Tournament Record */}
+            <TournamentRecord />
+
+            {/* Resume Details: Player Profile */}
+            <PlayerProfile />
+
+            {/* Contact Coordinates: Join the Team */}
+            <Contact />
+          </main>
+
+          {/* Footer Quote & Signatures */}
+          <Footer />
         </div>
-      </main>
-    </div>
+      )}
+    </>
   );
 }
