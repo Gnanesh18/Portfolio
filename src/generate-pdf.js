@@ -41,7 +41,7 @@ y += 26;
 doc.fillColor(bodyColor)
    .font('Times-Italic')
    .fontSize(9.5)
-   .text('MCA student with strong foundation in frontend development', leftMargin, y, { width: contentWidth, align: 'center' });
+   .text('MCA student with hands-on experience building full-stack applications', leftMargin, y, { width: contentWidth, align: 'center' });
 
 y += 15;
 
@@ -119,13 +119,13 @@ drawSectionHeader('PROFESSIONAL SUMMARY');
 doc.fillColor(bodyColor)
    .font('Helvetica')
    .fontSize(8.5)
-   .text('MCA student with strong foundation in frontend development using ', leftMargin, y, { continued: true, width: contentWidth, align: 'justify', lineGap: 2.5 })
-   .font('Helvetica-Bold').text('React, JavaScript, HTML ', { continued: true })
-   .font('Helvetica').text('and ', { continued: true })
-   .font('Helvetica-Bold').text('CSS', { continued: true })
-   .font('Helvetica').text('. Having worked on projects on Management Systems using ', { continued: true })
-   .font('Helvetica-Bold').text('MERN stack', { continued: true })
-   .font('Helvetica').text('. Seeking a frontend developer role to build scalable and user-friendly applications.', { width: contentWidth, align: 'justify', lineGap: 2.5 });
+   .text('MCA student with hands-on experience building full-stack applications using ', leftMargin, y, { continued: true, width: contentWidth, align: 'justify', lineGap: 2.5 })
+   .font('Helvetica-Bold').text('React, Node.js, Express, and MongoDB', { continued: true })
+   .font('Helvetica').text('. Interested in ', { continued: true })
+   .font('Helvetica-Bold').text('frontend engineering ', { continued: true })
+   .font('Helvetica').text('and creating ', { continued: true })
+   .font('Helvetica-Bold').text('performant user experiences', { continued: true })
+   .font('Helvetica').text('.', { width: contentWidth, align: 'justify', lineGap: 2.5 });
 
 y += 34;
 

@@ -78,7 +78,7 @@ export default function Hero() {
               "Building software with the discipline of an athlete."
             </p>
             <p className="text-soft-gray text-base sm:text-lg leading-relaxed font-light">
-              MCA student with a strong foundation in full-stack development using React, JavaScript, Node.js, Express, and databases. Experienced in building responsive interfaces and interactive management systems. Seeking a full-stack developer role to build scalable, high-performance, and user-friendly applications.
+              MCA student with hands-on experience building full-stack applications using React, Node.js, Express, and MongoDB. Interested in frontend engineering and creating performant user experiences.
             </p>
           </motion.div>
 

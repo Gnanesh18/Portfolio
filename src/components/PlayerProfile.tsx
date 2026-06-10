@@ -72,7 +72,7 @@ export default function PlayerProfile() {
                 </h3>
               </div>
               <p className="text-soft-gray text-sm leading-relaxed font-light">
-                MCA student with a strong foundation in full-stack development using React, JavaScript, Node.js, Express, and databases. Having worked on projects such as Management Systems using the MERN stack, I am seeking a full-stack developer role to build scalable, high-performance, and user-friendly web applications.
+                MCA student with hands-on experience building full-stack applications using React, Node.js, Express, and MongoDB. Interested in frontend engineering and creating performant user experiences.
               </p>
             </div>
 
