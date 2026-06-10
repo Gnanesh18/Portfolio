@@ -22,6 +22,14 @@ const matches = [
       { label: "Security Layer", value: "Role-Based" },
       { label: "Team Phase", value: "Oct 2025 - Apr 2026" }
     ],
+    maturitySpecs: {
+      git: "Collaborative Branching & PRs",
+      api: "Express RESTful endpoints",
+      auth: "Role-based login gates",
+      deployment: "Vercel (UI) & Render (DB)",
+      responsiveness: "Fluid Flexbox/Grid layout",
+      state: "React hooks & Context API"
+    },
     tacticalBreakdown: "Engineered responsive manager panels and streamlined transaction routes. Restricting inputs via role gates eliminated recording errors and elevated transaction logging integrity by 30%.",
     github: "https://github.com/darshan-gowdaa/petrol-bunk-management-system",
     live: "https://petrol-bunk-management-system-alpha.vercel.app/",
@@ -46,6 +54,14 @@ const matches = [
       { label: "Architecture", value: "Next.js / React" },
       { label: "Dev Duration", value: "Mar 2026 - Apr 2026" }
     ],
+    maturitySpecs: {
+      git: "Feature branch workflow",
+      api: "CoinGecko live market API",
+      auth: "Public endpoint access",
+      deployment: "Vercel Continuous Deploy",
+      responsiveness: "Tailwind media breakports",
+      state: "React hooks & Local Cache"
+    },
     tacticalBreakdown: "Implemented client-side cache state limits and data throttling for active APIs. Structured lightweight price chart graphics to avoid main-thread blocks.",
     github: "https://github.com/Gnanesh18/CryptoSight",
     live: "https://crypto-sight-five.vercel.app/",
@@ -70,6 +86,14 @@ const matches = [
       { label: "Build Target", value: "Vercel Deploy" },
       { label: "Dev Duration", value: "May 2026" }
     ],
+    maturitySpecs: {
+      git: "GitHub actions CI pipelines",
+      api: "Google Gemini AI model",
+      auth: "Secure JWT & DB sessions",
+      deployment: "Vercel Serverless hosting",
+      responsiveness: "Mobile-first glassmorphism",
+      state: "Persistent progress state"
+    },
     tacticalBreakdown: "Optimized prompt engineering inputs and response schemas for the Gemini API, reducing roadmap generation failures. Configured persistent MongoDB storage to maintain user progress and assessment logs across serverless sessions.",
     github: "https://github.com/Gnanesh18/skillmatrix",
     live: "https://skillmatrix-chi.vercel.app/",
@@ -209,6 +233,40 @@ export default function MatchHighlights() {
                         {t}
                       </span>
                     ))}
+                  </div>
+
+                  {/* Engineering Maturity Specs Grid */}
+                  <div className="pt-5 border-t border-white/10 mt-5">
+                    <h5 className="font-oswald text-[10px] uppercase tracking-widest text-orange-karasuno font-bold mb-3 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 bg-orange-karasuno"></span>
+                      ENGINEERING SPECIFICATIONS // MATURITY
+                    </h5>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">Git Workflow</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.git}>{match.maturitySpecs.git}</span>
+                      </div>
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">API Integrations</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.api}>{match.maturitySpecs.api}</span>
+                      </div>
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">Authentication</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.auth}>{match.maturitySpecs.auth}</span>
+                      </div>
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">Deployment</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.deployment}>{match.maturitySpecs.deployment}</span>
+                      </div>
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">Responsive Design</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.responsiveness}>{match.maturitySpecs.responsiveness}</span>
+                      </div>
+                      <div className="bg-[#0B0B0B]/60 border border-white/5 p-2 hover:border-orange-karasuno/20 transition-colors duration-200">
+                        <span className="block text-[8px] uppercase tracking-wider text-soft-gray font-light">State Management</span>
+                        <span className="block text-[9.5px] font-semibold text-white/90 mt-0.5 font-oswald uppercase tracking-wide truncate" title={match.maturitySpecs.state}>{match.maturitySpecs.state}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
