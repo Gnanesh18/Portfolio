@@ -107,7 +107,7 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, "#contact")}
               className="group flex items-center gap-1.5 bg-orange-karasuno text-white font-oswald text-xs uppercase tracking-widest px-5 py-2.5 rounded-none border border-orange-karasuno hover:bg-transparent hover:text-orange-karasuno transition-all duration-300"
             >
-              <span>Draft Player</span>
+              <span>Draft Me</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
