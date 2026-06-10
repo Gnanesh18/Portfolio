@@ -135,9 +135,9 @@ y += 34;
 drawSectionHeader('EDUCATIONS');
 
 // Entry 1: BMS ITM
-drawRow('BMS Institute Of Technology And Management | Bengaluru', '2027 - Present', 9, 'Helvetica-Bold', 'Helvetica-Bold');
+drawRow('BMS Institute Of Technology And Management | Bengaluru', '2026 - 2027', 9, 'Helvetica-Bold', 'Helvetica-Bold');
 drawSubRow('Master Of Computer Applications', 'CGPA : 8.0');
-doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  Master Of Computer Applications, BMS Institute Of Technology And Management, Bengaluru, 2027', leftMargin + 10, y, { width: contentWidth - 10 });
+doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  Master Of Computer Applications, BMS Institute Of Technology And Management, Bengaluru, 2026 - 2027', leftMargin + 10, y, { width: contentWidth - 10 });
 y += 14;
 
 // Entry 2: SJU

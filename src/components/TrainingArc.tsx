@@ -62,7 +62,7 @@ const milestones = [
     title: "MCA Advanced Division",
     subtitle: "BMSIT // BENGALURU",
     description: "Enrolled in Master of Computer Applications (MCA) at BMS Institute of Technology and Management, Bengaluru. Mastering advanced computation concepts and system structures.",
-    details: "CGPA: 8.0 // 2027 - Present",
+    details: "CGPA: 8.0 // 2026 - 2027",
     icon: Award,
     diagram: (
       <svg className="w-full h-full max-w-[150px] opacity-40" viewBox="0 0 100 100" fill="none">

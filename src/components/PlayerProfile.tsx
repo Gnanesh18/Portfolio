@@ -89,7 +89,7 @@ export default function PlayerProfile() {
                 {/* Item 1: MCA */}
                 <div className="border-l-2 border-orange-karasuno pl-4 relative">
                   <span className="font-oswald text-[9px] text-orange-karasuno font-bold uppercase tracking-widest block mb-0.5 animate-pulse">
-                    CURRENT LEAGUE // 2025 - Present
+                    CURRENT LEAGUE // 2026 - 2027
                   </span>
                   <h4 className="font-oswald text-sm font-semibold text-white tracking-wide">
                     Master Of Computer Applications (MCA)
