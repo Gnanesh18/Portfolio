@@ -172,7 +172,7 @@ export default function TrainingArc() {
                       <div className="flex items-start justify-between gap-4 mb-4">
                         <div>
                           <span className="font-oswald text-[10px] tracking-widest text-orange-karasuno font-bold block mb-1">
-                            {milestone.phase} // {milestone.subtitle}
+                            {milestone.phase} {"//"} {milestone.subtitle}
                           </span>
                           <h3 className="font-bebas text-3xl text-white tracking-wide group-hover:text-orange-karasuno transition-colors">
                             {milestone.title}

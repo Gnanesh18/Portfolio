@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
 
@@ -80,8 +81,17 @@ doc.link(startX, y - 2, githubWidth, 11, 'https://github.com/Gnanesh18');
 
 y += 22;
 
+// Helper to ensure page layout space, breaking to a new page if needed
+function ensureSpace(neededHeight) {
+  if (y + neededHeight > 800) {
+    doc.addPage();
+    y = 35;
+  }
+}
+
 // Helper to draw clean section header
 function drawSectionHeader(title) {
+  ensureSpace(35);
   doc.fillColor(darkColor)
      .font('Helvetica-Bold')
      .fontSize(10.5)
@@ -98,6 +108,7 @@ function drawSectionHeader(title) {
 
 // Helper to draw left-right row
 function drawRow(leftText, rightText, size = 9, leftFont = 'Helvetica-Bold', rightFont = 'Helvetica') {
+  ensureSpace(size + 4);
   doc.fillColor(darkColor).font(leftFont).fontSize(size).text(leftText, leftMargin, y);
   doc.fillColor(darkColor).font(rightFont).fontSize(size).text(rightText, leftMargin, y, { align: 'right', width: contentWidth });
   y += size + 4;
@@ -105,6 +116,7 @@ function drawRow(leftText, rightText, size = 9, leftFont = 'Helvetica-Bold', rig
 
 // Helper to draw italicized sub-row
 function drawSubRow(leftText, rightText, size = 8.5) {
+  ensureSpace(size + 4);
   doc.fillColor(bodyColor).font('Helvetica-Oblique').fontSize(size).text(leftText, leftMargin, y);
   doc.fillColor(bodyColor).font('Helvetica-Oblique').fontSize(size).text(rightText, leftMargin, y, { align: 'right', width: contentWidth });
   y += size + 4;
@@ -137,6 +149,7 @@ drawSectionHeader('EDUCATIONS');
 // Entry 1: BMS ITM
 drawRow('BMS Institute Of Technology And Management | Bengaluru', '2026 - 2027', 9, 'Helvetica-Bold', 'Helvetica-Bold');
 drawSubRow('Master Of Computer Applications', 'CGPA : 8.0');
+ensureSpace(14);
 doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  Master Of Computer Applications, BMS Institute Of Technology And Management, Bengaluru, 2026 - 2027', leftMargin + 10, y, { width: contentWidth - 10 });
 y += 14;
 
@@ -161,6 +174,7 @@ y += 10;
 drawSectionHeader('PROJECTS');
 
 // Project 1
+ensureSpace(40);
 doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('Petrol Bunk Management System |     Github', leftMargin, y);
 // Draw tiny GitHub icon right before the word Github
 const petrolTitleWidth = doc.widthOfString('Petrol Bunk Management System | ');
@@ -188,21 +202,26 @@ const p1Bullets = [
 ];
 
 p1Bullets.forEach(parts => {
+  const textHeight = doc.heightOfString('•  ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  ensureSpace(textHeight);
   doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  ', leftMargin + 10, y, { continued: true });
   for (let i = 0; i < parts.length; i++) {
     const isBold = i % 2 === 1;
     doc.font(isBold ? 'Helvetica-Bold' : 'Helvetica').text(parts[i], { continued: i < parts.length - 1 });
   }
-  y += doc.heightOfString('• ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  y += textHeight;
 });
 
 // Technologies line
+const techHeight1 = doc.heightOfString('Technologies / Tools Used : React, Node.js, Express, MongoDB', { width: contentWidth - 10 }) + 3;
+ensureSpace(techHeight1);
 doc.fillColor(bodyColor).font('Helvetica-Bold').fontSize(8.5).text('Technologies / Tools Used : ', leftMargin + 10, y, { continued: true });
 doc.font('Helvetica-Oblique').text('React, Node.js, Express, MongoDB');
 y += 16;
 
 
 // Project 2
+ensureSpace(40);
 doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('Crypto Currency Dashboard |     Github', leftMargin, y);
 const cryptoTitleWidth = doc.widthOfString('Crypto Currency Dashboard | ');
 doc.save()
@@ -230,17 +249,111 @@ const p2Bullets = [
 ];
 
 p2Bullets.forEach(parts => {
+  const textHeight = doc.heightOfString('•  ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  ensureSpace(textHeight);
   doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  ', leftMargin + 10, y, { continued: true });
   for (let i = 0; i < parts.length; i++) {
     const isBold = i % 2 === 1;
     doc.font(isBold ? 'Helvetica-Bold' : 'Helvetica').text(parts[i], { continued: i < parts.length - 1 });
   }
-  y += doc.heightOfString('• ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  y += textHeight;
 });
 
 // Technologies line
+const techHeight2 = doc.heightOfString('Technologies / Tools Used : React, Next.js', { width: contentWidth - 10 }) + 3;
+ensureSpace(techHeight2);
 doc.fillColor(bodyColor).font('Helvetica-Bold').fontSize(8.5).text('Technologies / Tools Used : ', leftMargin + 10, y, { continued: true });
 doc.font('Helvetica-Oblique').text('React, Next.js');
+y += 15;
+
+
+// Project 3
+ensureSpace(40);
+doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('SkillMatrix AI Dashboard |     Github', leftMargin, y);
+const skillmatrixTitleWidth = doc.widthOfString('SkillMatrix AI Dashboard | ');
+doc.save()
+   .translate(leftMargin + skillmatrixTitleWidth + 2, y + 1)
+   .scale(0.5)
+   .path('M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z')
+   .fill(darkColor)
+   .restore();
+doc.link(leftMargin + skillmatrixTitleWidth, y - 2, 40, 11, 'https://github.com/Gnanesh18/skillmatrix');
+
+doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('May 2026', leftMargin, y, { align: 'right', width: contentWidth });
+y += 13;
+
+doc.fillColor(bodyColor).font('Helvetica-Oblique').fontSize(8.5).text('[Frontend Developer / AI Integration]', leftMargin, y);
+y += 12;
+
+// Bullets
+const p3Bullets = [
+  ['Developed an ', 'interactive AI-powered learning dashboard', ' featuring custom skill assessments and career roadmap generation.'],
+  ['Integrated ', 'Google Gemini AI API', ' endpoints to generate custom, actionable step-by-step learning roadmaps and chatbot assistance.'],
+  ['Built interactive assessment modules enforcing ', 'anti-hallucination rules', ' and question variety.'],
+  ['Developed secure JWT-based authentication and ', 'MongoDB', ' integrations for persistent user state across serverless sessions.']
+];
+
+p3Bullets.forEach(parts => {
+  const textHeight = doc.heightOfString('•  ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  ensureSpace(textHeight);
+  doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  ', leftMargin + 10, y, { continued: true });
+  for (let i = 0; i < parts.length; i++) {
+    const isBold = i % 2 === 1;
+    doc.font(isBold ? 'Helvetica-Bold' : 'Helvetica').text(parts[i], { continued: i < parts.length - 1 });
+  }
+  y += textHeight;
+});
+
+// Technologies line
+const techHeight3 = doc.heightOfString('Technologies / Tools Used : React, TypeScript, Tailwind CSS, MongoDB, Express, Gemini API', { width: contentWidth - 10 }) + 3;
+ensureSpace(techHeight3);
+doc.fillColor(bodyColor).font('Helvetica-Bold').fontSize(8.5).text('Technologies / Tools Used : ', leftMargin + 10, y, { continued: true });
+doc.font('Helvetica-Oblique').text('React, TypeScript, Tailwind CSS, MongoDB, Express, Gemini API');
+y += 15;
+
+
+// Project 4
+ensureSpace(40);
+doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('AthleteOS |     Github', leftMargin, y);
+const athleteosTitleWidth = doc.widthOfString('AthleteOS | ');
+doc.save()
+   .translate(leftMargin + athleteosTitleWidth + 2, y + 1)
+   .scale(0.5)
+   .path('M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z')
+   .fill(darkColor)
+   .restore();
+doc.link(leftMargin + athleteosTitleWidth, y - 2, 40, 11, 'https://github.com/Gnanesh18/sports_ai');
+
+doc.fillColor(darkColor).font('Helvetica-Bold').fontSize(9).text('June 2026', leftMargin, y, { align: 'right', width: contentWidth });
+y += 13;
+
+doc.fillColor(bodyColor).font('Helvetica-Oblique').fontSize(8.5).text('[Full Stack Developer]', leftMargin, y);
+y += 12;
+
+// Bullets
+const p4Bullets = [
+  ['Developed a full-stack sports performance management platform for athletes and coaches to track training sessions, match performance, rankings, and injury history.'],
+  ['Built ', 'responsive dashboards and analytics modules', ' to visualize athlete progress and performance trends.'],
+  ['Implemented ', 'role-based workflows', ' for athletes and coaches, improving training management efficiency.'],
+  ['Designed a ', 'scalable architecture', ' using React, Node.js, Express, and MongoDB, and deployed the platform on Vercel.']
+];
+
+p4Bullets.forEach(parts => {
+  const textHeight = doc.heightOfString('•  ' + parts.join(''), { width: contentWidth - 10 }) + 3;
+  ensureSpace(textHeight);
+  doc.fillColor(bodyColor).font('Helvetica').fontSize(8.5).text('•  ', leftMargin + 10, y, { continued: true });
+  for (let i = 0; i < parts.length; i++) {
+    const isBold = i % 2 === 1;
+    doc.font(isBold ? 'Helvetica-Bold' : 'Helvetica').text(parts[i], { continued: i < parts.length - 1 });
+  }
+  y += textHeight;
+});
+
+// Technologies line
+const techHeight4 = doc.heightOfString('Technologies / Tools Used : React, Node.js, Express, MongoDB, Vercel', { width: contentWidth - 10 }) + 3;
+ensureSpace(techHeight4);
+doc.fillColor(bodyColor).font('Helvetica-Bold').fontSize(8.5).text('Technologies / Tools Used : ', leftMargin + 10, y, { continued: true });
+doc.font('Helvetica-Oblique').text('React, Node.js, Express, MongoDB, Vercel');
 y += 15;
 
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trophy, CheckCircle, ShieldCheck, Flame, Users, Award } from "lucide-react";
+import { Trophy, CheckCircle, Award } from "lucide-react";
 
 const tournamentRecords = [
   {

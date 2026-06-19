@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Eye, GraduationCap, Target, Award, Heart } from "lucide-react";
+import Image from "next/image";
+import { GraduationCap, Target, Award } from "lucide-react";
 
 export default function PlayerProfile() {
   return (
@@ -43,9 +43,11 @@ export default function PlayerProfile() {
             <div className="relative w-full aspect-[4/5] border border-white/10 flex items-center justify-center overflow-hidden group">
               <div className="absolute inset-0 tactical-grid opacity-[0.05] z-10 pointer-events-none"></div>
               
-              <img 
+              <Image 
                 src="/profile.jpg" 
                 alt="Gnanesh K C Profile" 
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
               />
             </div>
@@ -121,7 +123,7 @@ export default function PlayerProfile() {
                     Class XII (MSBA)
                   </h4>
                   <p className="text-soft-gray text-xs mt-1 font-light">
-                    St Joseph's Pre University College, Bengaluru. • Percentage: 80.33%
+                    St Joseph&apos;s Pre University College, Bengaluru. • Percentage: 80.33%
                   </p>
                 </div>
 

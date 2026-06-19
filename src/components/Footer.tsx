@@ -23,7 +23,7 @@ export default function Footer() {
             GNANESH <span className="text-orange-karasuno">K C</span>
           </div>
           <p className="font-oswald text-xs uppercase tracking-[0.25em] text-orange-karasuno font-bold">
-            "Today's effort becomes tomorrow's victory."
+            &quot;Today&apos;s effort becomes tomorrow&apos;s victory.&quot;
           </p>
           <div className="text-[10px] text-soft-gray font-light uppercase tracking-widest">
             © 2027 Gnanesh K C • ALL RIGHTS RESERVED

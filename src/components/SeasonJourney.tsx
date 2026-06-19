@@ -81,7 +81,7 @@ export default function SeasonJourney() {
             {/* Highlighted active tracker path */}
             <div className="absolute top-2 bottom-2 w-[1px] bg-orange-karasuno/10"></div>
 
-            {milestones.map((milestone, idx) => {
+            {milestones.map((milestone) => {
               const isActive = activeMilestone === milestone.id;
               
               return (

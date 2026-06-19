@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion as motionFramer } from "framer-motion";
-import { Github, ExternalLink, Play, Search, Eye } from "lucide-react";
+import { Github, ExternalLink, Eye } from "lucide-react";
 
 const matches = [
   {
@@ -99,6 +100,38 @@ const matches = [
     live: "https://skillmatrix-chi.vercel.app/",
     imageAccentText: "MATCH_DAY_03 // SKILL_MATRIX",
     image: "/skillmatrix.png"
+  },
+  {
+    id: "match-04",
+    name: "AthleteOS",
+    headline: "FULL-STACK SPORTS TECHNOLOGY ENGINE BOOSTS COACHING & TRAINING EFFICIENCY",
+    role: "Full Stack Developer (React UI, Node.js & MongoDB)",
+    summary: "A comprehensive sports performance management platform for athletes and coaches to track training sessions, match performance, rankings, and injury history.",
+    features: [
+      "Developed role-based workflows for athletes and coaches, improving training management efficiency",
+      "Built responsive dashboards and analytics modules to visualize athlete progress and performance trends",
+      "Designed a scalable architecture using React, Node.js, Express, and MongoDB, deployed on Vercel"
+    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "Vercel"],
+    stats: [
+      { label: "System Workflows", value: "Role-Based" },
+      { label: "Architecture", value: "Scalable MERN" },
+      { label: "Cloud Deploy", value: "Vercel Hosted" },
+      { label: "Dev Duration", value: "June 2026" }
+    ],
+    maturitySpecs: {
+      git: "Branch & PR workflow",
+      api: "Express RESTful endpoints",
+      auth: "Role-based workflows",
+      deployment: "Vercel Continuous Deploy",
+      responsiveness: "Mobile & Desktop UI Grid",
+      state: "React state & Analytics"
+    },
+    tacticalBreakdown: "Engineered responsive dashboard structures and role-based views. Optimized MongoDB data operations and Express endpoints to maintain quick page loading and analytics rendering across devices.",
+    github: "https://github.com/Gnanesh18/sports_ai",
+    live: "https://athleteos-app.vercel.app/",
+    imageAccentText: "MATCH_DAY_04 // ATHLETE_OS",
+    image: "/athleteos.png"
   }
 ];
 
@@ -151,9 +184,11 @@ export default function MatchHighlights() {
                   {/* Premium screenshot placeholder */}
                   <div className="relative aspect-video w-full bg-[#0B0B0B] border border-white/15 overflow-hidden flex items-center justify-center group/img">
                     {match.image ? (
-                      <img 
+                      <Image 
                         src={match.image} 
                         alt={match.name} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="w-full h-full object-cover opacity-80 group-hover/img:opacity-100 group-hover/img:scale-105 transition-all duration-500"
                       />
                     ) : (

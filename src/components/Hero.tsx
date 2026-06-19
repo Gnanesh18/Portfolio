@@ -75,7 +75,7 @@ export default function Hero() {
             className="max-w-2xl space-y-4 mx-auto lg:mx-0 lg:ml-auto"
           >
             <p className="font-oswald text-lg sm:text-xl text-orange-karasuno uppercase tracking-wide leading-relaxed font-medium">
-              "Building software with the discipline of an athlete."
+              &quot;Building software with the discipline of an athlete.&quot;
             </p>
             <p className="text-soft-gray text-base sm:text-lg leading-relaxed font-light">
               MCA student with hands-on experience building full-stack applications using React, Node.js, Express, and MongoDB. Interested in frontend engineering and creating performant user experiences.

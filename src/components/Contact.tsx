@@ -114,7 +114,7 @@ export default function Contact() {
             JOIN THE TEAM
           </h2>
           <p className="font-oswald text-xl text-orange-karasuno uppercase tracking-wide mt-2">
-            "Let's build something meaningful together."
+            &quot;Let&apos;s build something meaningful together.&quot;
           </p>
           <p className="text-soft-gray text-sm max-w-lg mt-2 mx-auto lg:mx-0 font-light leading-relaxed">
             Ready to jump in? Draft me as a full-time Full Stack Developer or collaborate on a high-stakes project. Reach out via the playbook form or the coordinates below.

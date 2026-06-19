@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import gsap from "gsap";
 
 interface LoadingScreenProps {
@@ -16,59 +16,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const titleRef = useRef<HTMLDivElement>(null);
   const percentRef = useRef<HTMLDivElement>(null);
 
-  // Progress Counter Simulation
-  useEffect(() => {
-    const duration = 3000; // 3 seconds
-    const intervalTime = 30;
-    const steps = duration / intervalTime;
-    let currentStep = 0;
-
-    const interval = setInterval(() => {
-      currentStep++;
-      const currentProgress = Math.min(Math.round((currentStep / steps) * 100), 100);
-      setProgress(currentProgress);
-
-      if (currentProgress >= 100) {
-        clearInterval(interval);
-        triggerServeAnimation();
-      }
-    }, intervalTime);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // GSAP animations for incremental reveals
-  useEffect(() => {
-    if (progress === 0) return;
-
-    // As progress ticks up, animate the volleyball's vertical position
-    // Rising from bottom (y: 200) to center (y: 0)
-    const yVal = 200 - (progress / 100) * 200;
-    const rotateVal = (progress / 100) * 360;
-    
-    gsap.to(ballRef.current, {
-      y: yVal,
-      rotation: rotateVal,
-      duration: 0.1,
-      ease: "power1.out",
-    });
-
-    // Animate stats reveal at milestones
-    if (progress === 25) {
-      gsap.to(".stat-item-1", { opacity: 1, x: 0, duration: 0.5 });
-      gsap.to(".court-line-1", { strokeDashoffset: 0, duration: 1 });
-    } else if (progress === 50) {
-      gsap.to(".stat-item-2", { opacity: 1, x: 0, duration: 0.5 });
-      gsap.to(".court-line-2", { strokeDashoffset: 0, duration: 1 });
-      gsap.to(".arrow-path-1", { strokeDashoffset: 0, duration: 1 });
-    } else if (progress === 75) {
-      gsap.to(".stat-item-3", { opacity: 1, x: 0, duration: 0.5 });
-      gsap.to(".court-line-3", { strokeDashoffset: 0, duration: 1 });
-      gsap.to(".arrow-path-2", { strokeDashoffset: 0, duration: 1 });
-    }
-  }, [progress]);
-
-  const triggerServeAnimation = () => {
+  const triggerServeAnimation = useCallback(() => {
     const tl = gsap.timeline({
       onComplete: () => {
         // Trigger parent state update to unmount loading screen
@@ -114,7 +62,59 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       duration: 0.6,
       ease: "power4.inOut"
     }, "-=0.1");
-  };
+  }, [onComplete]);
+
+  // Progress Counter Simulation
+  useEffect(() => {
+    const duration = 3000; // 3 seconds
+    const intervalTime = 30;
+    const steps = duration / intervalTime;
+    let currentStep = 0;
+
+    const interval = setInterval(() => {
+      currentStep++;
+      const currentProgress = Math.min(Math.round((currentStep / steps) * 100), 100);
+      setProgress(currentProgress);
+
+      if (currentProgress >= 100) {
+        clearInterval(interval);
+        triggerServeAnimation();
+      }
+    }, intervalTime);
+
+    return () => clearInterval(interval);
+  }, [triggerServeAnimation]);
+
+  // GSAP animations for incremental reveals
+  useEffect(() => {
+    if (progress === 0) return;
+
+    // As progress ticks up, animate the volleyball's vertical position
+    // Rising from bottom (y: 200) to center (y: 0)
+    const yVal = 200 - (progress / 100) * 200;
+    const rotateVal = (progress / 100) * 360;
+    
+    gsap.to(ballRef.current, {
+      y: yVal,
+      rotation: rotateVal,
+      duration: 0.1,
+      ease: "power1.out",
+    });
+
+    // Animate stats reveal at milestones
+    if (progress === 25) {
+      gsap.to(".stat-item-1", { opacity: 1, x: 0, duration: 0.5 });
+      gsap.to(".court-line-1", { strokeDashoffset: 0, duration: 1 });
+    } else if (progress === 50) {
+      gsap.to(".stat-item-2", { opacity: 1, x: 0, duration: 0.5 });
+      gsap.to(".court-line-2", { strokeDashoffset: 0, duration: 1 });
+      gsap.to(".arrow-path-1", { strokeDashoffset: 0, duration: 1 });
+    } else if (progress === 75) {
+      gsap.to(".stat-item-3", { opacity: 1, x: 0, duration: 0.5 });
+      gsap.to(".court-line-3", { strokeDashoffset: 0, duration: 1 });
+      gsap.to(".arrow-path-2", { strokeDashoffset: 0, duration: 1 });
+    }
+  }, [progress]);
 
   return (
     <div
