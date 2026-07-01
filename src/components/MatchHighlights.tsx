@@ -132,6 +132,39 @@ const matches = [
     live: "https://athleteos-app.vercel.app/",
     imageAccentText: "MATCH_DAY_04 // ATHLETE_OS",
     image: "/athleteos.png"
+  },
+  {
+    id: "match-05",
+    name: "Smart Theft Protection Platform",
+    headline: "MULTI-ROLE DISPATCH SYSTEM INTEGRATES INTERACTIVE LEAFLET GEOMAPPING & DYNAMIC PDF REPORT FILING",
+    role: "Full Stack Developer (Vite React Frontend, Node.js Express API & MongoDB System)",
+    summary: "An intelligent, multi-user web application allowing citizens to instantly file theft cases, pinpoint incident locations on interactive Leaflet maps, upload evidence media, and track investigations via real-time officer logs.",
+    features: [
+      "Engineered role-based authentication paths with secure JWT guards across Citizen, Officer, and Admin workspaces",
+      "Integrated Leaflet interactive geolocation maps allowing citizens to pin theft sites and officers to monitor incident clusters",
+      "Built automated PDF case-sheet generation (via jsPDF) compiling system data and metadata records for official printouts",
+      "Implemented a robust analytics dashboard with Chart.js, summarizing case status trends and incident counts"
+    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "Leaflet", "Chart.js", "jsPDF", "Tailwind CSS"],
+    stats: [
+      { label: "Dispatch Channels", value: "3 Roles (Citizen/Officer/Admin)" },
+      { label: "Location Engine", value: "Leaflet Map Pins" },
+      { label: "Analytics Core", value: "Chart.js Dashboard" },
+      { label: "Dev Duration", value: "June 2026 - Present" }
+    ],
+    maturitySpecs: {
+      git: "Feature-based branch routing",
+      api: "Express RESTful endpoints",
+      auth: "JWT & Bcrypt Security",
+      deployment: "Vercel Continuous Deploy",
+      responsiveness: "Mobile-first Tailwind layouts",
+      state: "React Context & Auth States"
+    },
+    tacticalBreakdown: "Designed structured database schemas supporting automatic case ID generation and linked officer-to-case collections. Configured Cloudinary media upload channels alongside jsPDF client-side builders to generate instantly download-ready case reports, cutting reporting overhead by 40%.",
+    github: "https://github.com/Gnanesh18/Theft-Protection",
+    live: "https://smart-theft-report.vercel.app/",
+    imageAccentText: "MATCH_DAY_05 // THEFT_SHIELD",
+    image: "/theftprotection.png"
   }
 ];
 
